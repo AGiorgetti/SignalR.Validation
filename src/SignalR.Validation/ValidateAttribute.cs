@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using Microsoft.AspNet.SignalR.Hubs;
 
 namespace SignalR.Validation
@@ -12,13 +10,13 @@ namespace SignalR.Validation
     {
         public IEnumerable<ValidationError> ValidateHubMethodInvocation(IHubIncomingInvokerContext hubIncomingInvokerContext)
         {
-            List<ValidationError> errors = new List<ValidationError>();
+            var errors = new List<ValidationError>();
 
-            for (int i = 0; i < hubIncomingInvokerContext.Args.Length; ++i)
+            for (int i = 0; i < hubIncomingInvokerContext.Args.Count; ++i)
             {
                 var arg = hubIncomingInvokerContext.Args[i];
-                ValidationContext ctx = new ValidationContext(arg, null, null);
-                List<ValidationResult> results = new List<ValidationResult>();
+                var ctx = new ValidationContext(arg, null, null);
+                var results = new List<ValidationResult>();
 
                 bool valid = Validator.TryValidateObject(arg, ctx, results, true);
 

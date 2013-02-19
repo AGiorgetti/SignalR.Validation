@@ -1,5 +1,5 @@
-﻿/// <reference path="../../Scripts/jquery-1.8.3.intellisense.js" />
-/// <reference path="../../Scripts/jquery.signalR-1.0.0-alpha2.js" />
+﻿/// <reference path="../../Scripts/jquery-1.9.1.intellisense.js" />
+/// <reference path="../../Scripts/jquery.signalR-1.0.0.js" />
 
 $(function () {
 

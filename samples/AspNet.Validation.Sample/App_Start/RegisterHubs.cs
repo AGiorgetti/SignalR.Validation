@@ -1,7 +1,6 @@
 using System.Web;
 using System.Web.Routing;
 using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hosting.AspNet;
 using SignalR.Validation;
 
 [assembly: PreApplicationStartMethod(typeof(AspNet.Validation.Sample.RegisterHubs), "Start")]
@@ -14,7 +13,12 @@ namespace AspNet.Validation.Sample
         {
             // Register the default hubs route: ~/signalr/hubs
             GlobalHost.HubPipeline.AddModule(new ValidationModule());
-            RouteTable.Routes.MapHubs();            
+            var config = new HubConfiguration
+                {
+                    EnableDetailedErrors = true
+                };
+
+            RouteTable.Routes.MapHubs(config);
         }
     }
 }
